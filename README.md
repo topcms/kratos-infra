@@ -1,6 +1,6 @@
-# kratos-infra
+# github.com/topcms/kratos-infra
 
-`kratos-infra` is a shared infrastructure library example for Kratos microservices.
+`github.com/topcms/kratos-infra` is a shared infrastructure library example for Kratos microservices.
 
 ## Packages
 

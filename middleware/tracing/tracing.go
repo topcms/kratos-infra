@@ -3,7 +3,7 @@ package tracing
 import (
 	"context"
 
-	"kratos-infra/middleware/logging"
+	"github.com/topcms/kratos-infra/middleware/logging"
 
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/transport"

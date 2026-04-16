@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	infraerrors "kratos-infra/errors"
+	infraerrors "github.com/topcms/kratos-infra/errors"
 
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/transport"
