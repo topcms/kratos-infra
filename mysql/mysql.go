@@ -15,6 +15,8 @@ type Config struct {
 }
 
 func NewDB(cfg Config) (*gorm.DB, error) {
+	// 不设置 NamingStrategy.TablePrefix：表前缀 ts_ 由 gen 生成的 model.TableName() 显式返回；
+	// 与 cmd/gen 中 WithModelNameStrategy 仅去掉「Go 类型名」前缀、不动物理表名一致。此处若再加 TablePrefix，易与默认复数规则叠加成错误表名（如 ts_users）。
 	db, err := gorm.Open(mysql.Open(cfg.DSN), &gorm.Config{})
 	if err != nil {
 		return nil, err
