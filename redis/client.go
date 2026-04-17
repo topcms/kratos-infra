@@ -3,6 +3,7 @@ package redis
 import (
 	"time"
 
+	"github.com/go-kratos/kratos/v2/log"
 	goredis "github.com/redis/go-redis/v9"
 )
 
@@ -15,8 +16,8 @@ type Config struct {
 	WriteTimeout time.Duration
 }
 
-func NewClient(cfg Config) *goredis.Client {
-	return goredis.NewClient(&goredis.Options{
+func NewClient(cfg Config, logger log.Logger) *goredis.Client {
+	client := goredis.NewClient(&goredis.Options{
 		Addr:         cfg.Addr,
 		Password:     cfg.Password,
 		DB:           cfg.DB,
@@ -24,4 +25,6 @@ func NewClient(cfg Config) *goredis.Client {
 		ReadTimeout:  cfg.ReadTimeout,
 		WriteTimeout: cfg.WriteTimeout,
 	})
+	client.AddHook(newLoggingHook(logger))
+	return client
 }
